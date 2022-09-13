@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">climate.narrative</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3</span>
       </span>
     </div>
 
@@ -50,34 +50,45 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">get_executive_summary_exposures</span><span class="op">(</span>
-  <span class="va">exposure_classes</span>,
-  <span class="va">aggregated_inputs</span>,
-  <span class="va">inputs</span>,
-  <span class="va">scenario_no</span>,
-  <span class="va">exec</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get_executive_summary_exposures</span><span class="op">(</span></span>
+<span>  <span class="va">exposure_classes</span>,</span>
+<span>  <span class="va">aggregated_inputs</span>,</span>
+<span>  <span class="va">inputs</span>,</span>
+<span>  <span class="va">scenario_no</span>,</span>
+<span>  <span class="va">exec</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>exposure_classes</dt>
 <dd><p>List of sectors</p></dd>
+
+
 <dt>aggregated_inputs</dt>
 <dd><p>data frame of aggregated inputs (implemented in the reactive expression)</p></dd>
+
+
 <dt>inputs</dt>
 <dd><p>data frame of all inputs (implemented in the reactive expression)</p></dd>
+
+
 <dt>scenario_no</dt>
 <dd><p>integer or vector of integers indicating which of the global$scenarios should be included</p></dd>
+
+
 <dt>exec</dt>
 <dd><p>the table of bools, determining which of the descriptions
 (in both high materiality and others) will be used in the report</p>
 <p>Rows denote risks (physical/transition)
 Columns denote risk intensity (high/low)</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>string - executive summary text</p>
+    
+
+<p>string - executive summary text</p>
     </div>
 
   </div>
@@ -92,7 +103,7 @@ Columns denote risk intensity (high/low)</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

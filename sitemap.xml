@@ -25,10 +25,10 @@
     <loc>/reference/aggregate_inputs.html</loc>
   </url>
   <url>
-    <loc>/reference/capitalize.html</loc>
+    <loc>/reference/aggregate_quantitative_to_qualitative_materiality.html</loc>
   </url>
   <url>
-    <loc>/reference/check_required_libraries.html</loc>
+    <loc>/reference/capitalize.html</loc>
   </url>
   <url>
     <loc>/reference/delete_empty_rows_and_columns.html</loc>
@@ -47,6 +47,12 @@
   </url>
   <url>
     <loc>/reference/filter_inputs.html</loc>
+  </url>
+  <url>
+    <loc>/reference/find_yaml_section.html</loc>
+  </url>
+  <url>
+    <loc>/reference/find_yaml_subsection.html</loc>
   </url>
   <url>
     <loc>/reference/format_images.html</loc>
@@ -127,13 +133,22 @@
     <loc>/reference/include_markdown_section.html</loc>
   </url>
   <url>
+    <loc>/reference/include_markdown_text.html</loc>
+  </url>
+  <url>
     <loc>/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>/reference/paste_recursive.html</loc>
   </url>
   <url>
     <loc>/reference/postprocess.html</loc>
   </url>
   <url>
     <loc>/reference/produce_report.html</loc>
+  </url>
+  <url>
+    <loc>/reference/produce_report_.html</loc>
   </url>
   <url>
     <loc>/reference/produce_tooltip_matrix.html</loc>
@@ -154,6 +169,9 @@
     <loc>/reference/remove_special_characters.html</loc>
   </url>
   <url>
+    <loc>/reference/replace_yaml_subsection.html</loc>
+  </url>
+  <url>
     <loc>/reference/restore_spaces.html</loc>
   </url>
   <url>
@@ -167,6 +185,9 @@
   </url>
   <url>
     <loc>/reference/run_shiny_app.html</loc>
+  </url>
+  <url>
+    <loc>/reference/separate_toc.html</loc>
   </url>
   <url>
     <loc>/reference/server.html</loc>

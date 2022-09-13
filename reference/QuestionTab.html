@@ -18,7 +18,7 @@ QuestionTab class definition"><!-- mathjax --><script src="https://cdnjs.cloudfl
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">climate.narrative</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3</span>
       </span>
     </div>
 
@@ -55,8 +55,8 @@ QuestionTab class definition"><!-- mathjax --><script src="https://cdnjs.cloudfl
     <div id="details">
     <h2>Details</h2>
     <p>Instances are tabs of the questionnaire.
-This is a wrapper over any ui and server that handles switching to previous/next tab if relevant
-(if the next_tab/previous_tab argument is NULL there is no button and corresponding server logic).</p>
+This is a wrapper over any ui and server
+(if the initial_next_tab/initial_previous_tab argument is NULL there is no button and corresponding server logic).</p>
     </div>
     <div id="public-fields">
     <h2>Public fields</h2>
@@ -84,11 +84,11 @@ This is a wrapper over any ui and server that handles switching to previous/next
 <dd><p>number assigned automatically based on 'ordered_tabs' vector of names</p></dd>
 
 
-<dt><code>previous_tab</code></dt>
+<dt><code>initial_previous_tab</code></dt>
 <dd><p>name of previous tab (optional)</p></dd>
 
 
-<dt><code>next_tab</code></dt>
+<dt><code>initial_next_tab</code></dt>
 <dd><p>name of previous tab (optional)</p></dd>
 
 
@@ -102,6 +102,10 @@ This is a wrapper over any ui and server that handles switching to previous/next
 
 <dt><code>add_header</code></dt>
 <dd><p>bool argument whether to include the standard header</p></dd>
+
+
+<dt><code>add_buttons</code></dt>
+<dd><p>bool argument whether to include the standard prev/next buttons</p></dd>
 
 
 <dt><code>exposure</code></dt>
@@ -142,19 +146,20 @@ This is a wrapper over any ui and server that handles switching to previous/next
 it also automatically gets ui, server and foot
 from the relevant functions (or makes it empty if the function does not exist)</p><div class="section">
 <h4 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span class="va"><a href="../reference/QuestionTab.html">QuestionTab</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>
-  <span class="va">tab_name</span>,
-  <span class="va">tab_title</span>,
-  <span class="va">previous_tab</span>,
-  <span class="va">next_tab</span>,
-  add_header <span class="op">=</span> <span class="cn">TRUE</span>,
-  add_footer <span class="op">=</span> <span class="cn">TRUE</span>,
-  exposure <span class="op">=</span> <span class="cn">NULL</span>,
-  type <span class="op">=</span> <span class="cn">NULL</span>,
-  subtype <span class="op">=</span> <span class="cn">NULL</span>,
-  ui_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,
-  bottom_offset <span class="op">=</span> <span class="fl">0</span>
-<span class="op">)</span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va"><a href="../reference/QuestionTab.html">QuestionTab</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
+<span>  <span class="va">tab_name</span>,</span>
+<span>  <span class="va">tab_title</span>,</span>
+<span>  <span class="va">initial_previous_tab</span>,</span>
+<span>  <span class="va">initial_next_tab</span>,</span>
+<span>  add_header <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  add_footer <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  add_buttons <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  exposure <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  type <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  subtype <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  ui_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  bottom_offset <span class="op">=</span> <span class="fl">0</span></span>
+<span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
@@ -167,11 +172,11 @@ from the relevant functions (or makes it empty if the function does not exist)</
 <dd><p>title of the tab to be used in the UI</p></dd>
 
 
-<dt><code>previous_tab</code></dt>
+<dt><code>initial_previous_tab</code></dt>
 <dd><p>name of the previous tab</p></dd>
 
 
-<dt><code>next_tab</code></dt>
+<dt><code>initial_next_tab</code></dt>
 <dd><p>name of the next tab</p></dd>
 
 
@@ -181,6 +186,10 @@ from the relevant functions (or makes it empty if the function does not exist)</
 
 <dt><code>add_footer</code></dt>
 <dd><p>whether to add a standard footer</p></dd>
+
+
+<dt><code>add_buttons</code></dt>
+<dd><p>whether to add a standard prev/next buttons</p></dd>
 
 
 <dt><code>exposure</code></dt>
@@ -209,19 +218,12 @@ from the relevant functions (or makes it empty if the function does not exist)</
 </div><p></p><hr><a id="method-server"></a><div class="section">
 <h3 id="method-server-">Method <code><a href="server.html">server()</a></code><a class="anchor" aria-label="anchor" href="#method-server-"></a></h3>
 <p>Tab server function that combines:</p><ol><li><p>server side of exposure input table (if given in the constructor)</p></li>
-<li><p>any other server tab_server (if given in the constructor)</p></li>
-<li><p>possibility of switch to previous/next tab (if applicable), using 'switch_page' function.
-additionally, a boolean function may be passed to allow going next only conditionally
-(by default the condition is always true)</p></li>
+<li><p>any other server tab_server (if given in the constructor)
+additionally, a boolean function may be passed to allow going next only conditionally</p></li>
+<li><p>possibility of switch to previous/next tab (if applicable), using 'switch_page' function.</p></li>
 </ol><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span class="va">QuestionTab</span><span class="op">$</span><span class="fu">server</span><span class="op">(</span>
-  <span class="va">input</span>,
-  <span class="va">output</span>,
-  <span class="va">session</span>,
-  <span class="va">switch_page</span>,
-  allow_next <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span>     <span class="cn">TRUE</span> <span class="op">}</span>
-<span class="op">)</span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">QuestionTab</span><span class="op">$</span><span class="fu">server</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span>, <span class="va">switch_page</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
@@ -243,10 +245,6 @@ additionally, a boolean function may be passed to allow going next only conditio
 (used in prev/next buttons)</p></dd>
 
 
-<dt><code>allow_next</code></dt>
-<dd><p>(optional) additional condition to be checked before going to next tab</p></dd>
-
-
 </dl><p></p></div>
 </div>
 
@@ -261,7 +259,7 @@ additionally, a boolean function may be passed to allow going next only conditio
 <li><p>a common footer (unless add_footer=FALSE)</p></li>
 </ol><div class="section">
 <h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span class="va">QuestionTab</span><span class="op">$</span><span class="fu">ui</span><span class="op">(</span><span class="op">)</span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">QuestionTab</span><span class="op">$</span><span class="fu">ui</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 
@@ -269,7 +267,7 @@ additionally, a boolean function may be passed to allow going next only conditio
 <h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
 <h4 id="usage-3">Usage<a class="anchor" aria-label="anchor" href="#usage-3"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span class="va">QuestionTab</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">QuestionTab</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
@@ -297,7 +295,7 @@ additionally, a boolean function may be passed to allow going next only conditio
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
